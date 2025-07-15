@@ -25,10 +25,13 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
-      - name: Enable and install pnpm via corepack
+      - name: Enable and activate pnpm
         run: |
           corepack enable
           corepack prepare pnpm@9.1.4 --activate
+
+      - name: Verify pnpm
+        run: pnpm --version
 
       - name: Create package.json
         run: pnpm init -y
