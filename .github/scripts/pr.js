@@ -12,6 +12,7 @@ const github = require('@actions/github');
 
         const repoFull = args['repo'];
         const [owner, repo] = repoFull.split('/');
+        const pull_number = parseInt(args['pr-number'], 10);
 
         await octokit.rest.pulls.update({
             owner,
