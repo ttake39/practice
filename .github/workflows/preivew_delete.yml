@@ -8,5 +8,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      id-token: write
+      contents: read
+      pull-requests: write
+
     steps:
-      - run: echo "github actions test"
+      - name: Check if GITHUB_TOKEN is available
+        run: echo "${{ secrets.GITHUB_TOKEN != '' && 'GITHUB_TOKEN OK' || 'MISSING GITHUB_TOKEN' }}"
+
