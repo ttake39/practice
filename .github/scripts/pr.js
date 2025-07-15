@@ -6,10 +6,7 @@ const github = require('@actions/github');
         const args = require('minimist')(process.argv.slice(3));
 
         const token = args['github-token'];
-        const featureBranch = args['feature-branch'];
-
-        const octokit = github.getOctokit(token);
-
+        const featureBranch = args['feature-branch'];        
         const repoFull = args['repo'];
         const [owner, repo] = repoFull.split('/');
         const pull_number = parseInt(args['pr-number'], 10);
@@ -18,6 +15,8 @@ const github = require('@actions/github');
         console.log('📌 Feature Branch:', featureBranch);
         console.log('owner:', owner);
         console.log('repo:', repo);
+
+        const octokit = github.getOctokit(token);
 
         await octokit.rest.pulls.update({
             owner,
