@@ -25,6 +25,9 @@ jobs:
             pnpm init
           fi
 
+      - name: Install dependencies
+        run: pnpm install
+
       - name: Run append script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
