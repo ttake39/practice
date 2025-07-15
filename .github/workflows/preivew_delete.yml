@@ -16,6 +16,9 @@ jobs:
       pull-requests: write
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Check if GITHUB_TOKEN is available
         run: echo "${{ secrets.GITHUB_TOKEN != '' && 'GITHUB_TOKEN OK' || 'MISSING GITHUB_TOKEN' }}"
 
@@ -28,19 +31,15 @@ jobs:
         with:
           node-version: '20'
 
-      - name: pacage-json
+      - name: Create package.json
         run: npm init -y
 
       - name: Install dependencies
         run: npm install @actions/core @actions/github
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Run append script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
         run: |
           node .github/scripts/pr.js \
             --github-token "$GITHUB_TOKEN" \
