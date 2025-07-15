@@ -28,6 +28,8 @@ jobs:
         with:
           node-version: '20'
 
+      - name: pacage-json
+        run: npm init -y
 
       - name: Install dependencies
         run: npm install @actions/core @actions/github
