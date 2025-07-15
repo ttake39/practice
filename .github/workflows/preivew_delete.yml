@@ -26,7 +26,7 @@ jobs:
           fi
 
       - name: add github
-        run: pnpm add @actions/github
+        run: pnpm add @actions/github minimist
 
       - name: Install dependencies
         run: pnpm install
