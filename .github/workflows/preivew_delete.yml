@@ -17,8 +17,7 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -26,13 +25,10 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
-
-      - name: Install dependencies
-        run: pnpm install
+      - name: Enable and install pnpm via corepack
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.1.4 --activate
 
       - name: Create package.json
         run: pnpm init -y
