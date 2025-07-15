@@ -24,6 +24,9 @@ jobs:
         with:
           version: 9.1.4
 
+      - name : pnpm
+        run: npm install -g pnpm
+
       - name: Confirm pnpm is available
         run: pnpm --version
 
