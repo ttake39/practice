@@ -9,6 +9,6 @@
         console.log('📌 Feature Branch:', featureBranch);
 
     }catch(err){
-        console.log('error');
+        console.log(err.message);
     }
 })();
