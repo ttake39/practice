@@ -30,11 +30,8 @@ jobs:
       - name: Create package.json if missing
         run: |
           if [ ! -f package.json ]; then
-            pnpm init -y
+            pnpm init
           fi
-
-      - name: Install dependencies
-        run: pnpm install
 
       - name: Run append script
         env:
