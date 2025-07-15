@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     timeout-minutes: 10
 
     permissions:
@@ -15,9 +16,6 @@ jobs:
       contents: read
       pull-requests: write
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
