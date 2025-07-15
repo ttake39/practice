@@ -37,4 +37,5 @@ jobs:
         run: |
           node .github/scripts/pr.js \
             --github-token "$GITHUB_TOKEN" \
+            --github "${{ github }} \
             --feature-branch "${{ github.event.pull_request.head.ref }}"
