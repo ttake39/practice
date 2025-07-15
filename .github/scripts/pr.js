@@ -14,17 +14,17 @@ const github = require('@actions/github');
         const [owner, repo] = repoFull.split('/');
         const pull_number = parseInt(args['pr-number'], 10);
 
+        console.log('✅ GitHub Token:', token ? '[REDACTED]' : '❌ Not provided');
+        console.log('📌 Feature Branch:', featureBranch);
+        console.log('owner:', owner);
+        console.log('repo:', repo);
+
         await octokit.rest.pulls.update({
             owner,
             repo,
             pull_number,
             body: "test",
           });
-
-        console.log('✅ GitHub Token:', token ? '[REDACTED]' : '❌ Not provided');
-        console.log('📌 Feature Branch:', featureBranch);
-        console.log('owner:', owner);
-        console.log('repo:', repo);
 
     }catch(err){
         console.log(err.message);
