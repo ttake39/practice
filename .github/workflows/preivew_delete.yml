@@ -34,7 +34,7 @@ jobs:
       - name: Run append script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node .github/scripts/pr.js
-      - with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        feature-branch: ${{ github.event.pull_request.head.ref }}
+        run: |
+          node .github/scripts/pr.js \
+            --github-token "$GITHUB_TOKEN" \
+            --feature-branch "${{ github.event.pull_request.head.ref }}"
