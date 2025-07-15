@@ -26,7 +26,7 @@ jobs:
           fi
 
       - name: add github
-        run: pnpm add @actions/github minimist
+        run: pnpm add @actions/core @actions/github minimist
 
       - name: Install dependencies
         run: pnpm install
@@ -37,5 +37,6 @@ jobs:
         run: |
           node .github/scripts/pr.js \
             --github-token "$GITHUB_TOKEN" \
-            --github "${{ github }} \
+            --repo "${{ github.repository }}" \
+            --pr-number "${{ github.event.pull_request.number }}" \
             --feature-branch "${{ github.event.pull_request.head.ref }}"
