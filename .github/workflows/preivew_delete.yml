@@ -35,6 +35,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Install Node dependencies
+        run: npm ci
+
       - name: Run append script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
