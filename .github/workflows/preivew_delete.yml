@@ -25,6 +25,9 @@ jobs:
             pnpm init
           fi
 
+      - name: core github
+        run: pnpm add @actions/core @actions/github
+
       - name: Install dependencies
         run: pnpm install
 
