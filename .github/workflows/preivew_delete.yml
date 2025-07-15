@@ -32,8 +32,10 @@ jobs:
       - name: Install dependencies
         run: npm install @actions/core @actions/github
 
-      - name: Run append script
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Run append script
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
