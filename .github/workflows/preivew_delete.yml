@@ -9,13 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    timeout-minutes: 10
-
-    permissions:
-      id-token: write
-      contents: read
-      pull-requests: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,13 +19,19 @@ jobs:
           node-version: '20'
           cache: 'pnpm'
 
-      - name: Set up pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
           version: 9.1.4
 
-      - name: Create package.json
-        run: pnpm init -y
+      - name: Confirm pnpm is available
+        run: pnpm --version
+
+      - name: Create package.json if missing
+        run: |
+          if [ ! -f package.json ]; then
+            pnpm init -y
+          fi
 
       - name: Install dependencies
         run: pnpm install
