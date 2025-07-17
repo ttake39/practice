@@ -8,8 +8,14 @@ const github = require('@actions/github');
  */
 async function main(args){
 
-    const token = args['github-token'];
-    
+    try{
+        console.info(`INFO: [Starg] Main`);
+        const token = args['github-token'];
+    } catch(err) {
+        console.error(`ERROR: ${err.message}`);
+    } finally {
+        console.info(`INFO: [End] Main`);
+    }
 }
 
 module.exports = { main };
