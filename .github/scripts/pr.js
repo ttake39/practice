@@ -11,6 +11,8 @@ async function main(args){
     try{
         console.info(`INFO: [Starg] Main`);
         const token = args['github-token'];
+
+        console.info(`token:${token}`);
     } catch(err) {
         console.error(`ERROR: ${err.message}`);
     } finally {
