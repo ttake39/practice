@@ -1,6 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-
+console.log(`INFO: [Starg] Main`);
 /**
  * script entry point (main処理)
  * @param {object} args - CLI引数をパースしたオブジェクト
