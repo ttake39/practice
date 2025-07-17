@@ -9,12 +9,12 @@ const github = require('@actions/github');
 async function main(args){
 
     try{
-        console.info(`INFO: [Starg] Main`);
+        console.log(`INFO: [Starg] Main`);
         const token = args['github-token'];
     } catch(err) {
         console.error(`ERROR: ${err.message}`);
     } finally {
-        console.info(`INFO: [End] Main`);
+        console.log(`INFO: [End] Main`);
     }
 }
 
