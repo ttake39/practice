@@ -32,8 +32,8 @@ async function main(args){
             pull_number: parseInt(prNumber,10)
         });
 
-        const newMessage = `Preview path:${featureBranch}`;
-        const newBody = `${newMessage}\n\n${pr.body || ''}`;
+        // Body 作成
+        new Body = upsertPreviewPath(pr.body,featureBranch);
 
         await octokit.rest.pulls.update({
             owner,
@@ -47,6 +47,29 @@ async function main(args){
         console.info(`INFO: [End] Main`);
     }
 }
+
+/**
+ * 
+ * @param {*} body 
+ * @param {*} newPath 
+ */
+function upsertPreviewPath(body, newPath){
+    const makerStart = '<!-- PREVIEW_S3_PATH_START -->';
+    const makerEnd = '<!-- PREVIEW_S3_PATH_END -->';
+    const newBlock = `${makerStart}\n${newBlock}\n${makerEnd}`;
+
+    if(body.include(makerStart) && body.include(makerEnd)){
+
+        // StartとEndに囲まれていたら更新
+        return body.replase(
+            new RegExp(`${markerStart}[\\s\\S]*?${markerEnd}`, 'm'),
+            newBlock
+        );
+    }else{
+        return `${makerStart}\n${newPath}\n${makerEnd}`
+    }
+}
+
 // CLIから
 if (require.main === module) {
     const minimist = require('minimist');
