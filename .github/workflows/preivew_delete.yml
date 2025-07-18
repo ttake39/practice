@@ -38,7 +38,8 @@ jobs:
 
       - name: Run append script
         run: |
-          node .github/scripts/pr.js \
+          cd .github/scripts
+          node ./append-feature-body.js \
             --github-token "${{ secrets.GITHUB_TOKEN }}" \
             --repo "${{ github.repository }}" \
             --pr-number "${{ github.event.pull_request.number }}" \
