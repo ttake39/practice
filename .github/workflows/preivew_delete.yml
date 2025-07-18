@@ -2,6 +2,7 @@ name: "Merged to Release"
 
 on:
   pull_request:
+    types: [closed]
     branches:
       - 'releases/*'
 
