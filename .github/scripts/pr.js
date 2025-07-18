@@ -61,7 +61,7 @@ function upsertPreviewPath(body, newPath){
     // Null考慮
     if (!body) body = '';
 
-    if(body.include(makerStart) && body.include(makerEnd)){
+    if(body.includes(makerStart) && body.includes(makerEnd)){
         console.info("koko1");
         // StartとEndに囲まれていたら更新
         return body.replase(
