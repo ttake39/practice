@@ -16,10 +16,12 @@ async function main(args){
         const featureBranch = args['feature-branch'];
 
         console.info(`token:${token}`);
-        console.info(`token:${repo}`);
-        console.info(`token:${prNumber}`);
-        console.info(`token:${featureBranch}`);
-        
+        console.info(`repo:${repo}`);
+        console.info(`PR Number:${prNumber}`);
+        console.info(`feature Branch:${featureBranch}`);
+
+        const octokit = github.getOctokit(token);
+
     } catch(err) {
         console.error(`ERROR: ${err.message}`);
     } finally {
