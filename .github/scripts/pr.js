@@ -29,10 +29,18 @@ async function main(args){
         const { data: pr } = await octokit.rest.pulls.get({
             owner,
             repo: repoName,
-            pull_number: prNumber
+            pull_number: parseInt(prNumber,10)
         });
 
+        const newMessage = "Message test";
+        const newBody = `${newMessage}\n\n${pr.body || ''}`;
 
+        await octokit.rest.pulls.update({
+            owner,
+            repo: repoName,
+            pull_number: parseInt(prNumber,10),
+            body: newBody
+        });
     } catch(err) {
         console.error(`ERROR: ${err.message}`);
     } finally {
