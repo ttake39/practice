@@ -33,7 +33,7 @@ async function main(args){
         });
 
         // Body 作成
-        new Body = upsertPreviewPath(pr.body,featureBranch);
+        const newBody = upsertPreviewPath(pr.body,featureBranch);
 
         await octokit.rest.pulls.update({
             owner,
