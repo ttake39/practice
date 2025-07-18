@@ -14,13 +14,24 @@ async function main(args){
         const repo = args['repo'];
         const prNumber = args['pr-number'];
         const featureBranch = args['feature-branch'];
+        const [owner,repoName] = repo.split('/');
 
         console.info(`token:${token}`);
-        console.info(`repo:${repo}`);
+        console.info(`repo:${owner}`);
+        console.info(`repo:${repoName}`);
         console.info(`PR Number:${prNumber}`);
         console.info(`feature Branch:${featureBranch}`);
 
+        // octkit 初期化
         const octokit = github.getOctokit(token);
+
+        // PR情報取得
+        const { data: pr } = await octokit.rest.pulls.get({
+            owner,
+            repo: repoName,
+            pull_number: prNumber
+        });
+
 
     } catch(err) {
         console.error(`ERROR: ${err.message}`);
