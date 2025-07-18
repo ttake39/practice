@@ -64,7 +64,7 @@ function upsertPreviewPath(body, newPath){
     if(body.includes(makerStart) && body.includes(makerEnd)){
         // StartとEndに囲まれていたら更新
         return body.replase(
-            new RegExp(`${markerStart}[\\s\\S]*?${markerEnd}`, 'm'),
+            new RegExp(`${makerStart}[\\s\\S]*?${makerEnd}`, 'm'),
             newBlock
         );
     }else{
