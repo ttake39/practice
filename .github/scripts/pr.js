@@ -58,6 +58,9 @@ function upsertPreviewPath(body, newPath){
     const makerEnd = '<!-- PREVIEW_S3_PATH_END -->';
     const newBlock = `${makerStart}\n${newPath}\n${makerEnd}`;
 
+    // Null考慮
+    if (!body) body = '';
+
     if(body.include(makerStart) && body.include(makerEnd)){
         console.info("koko1");
         // StartとEndに囲まれていたら更新
