@@ -14,3 +14,5 @@
 
 - commit 削除
 `git reset --hard HEAD~1`
+
+[feature] ─▶ PR ─▶ [releases/release-YYYY-MM-DD] ─▶ PR ─▶ [master]
