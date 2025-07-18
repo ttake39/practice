@@ -2,6 +2,7 @@ name: "Merged to Release"
 
 on:
   pull_request:
+    types: [closed]
     branches:
       - 'releases/*'
 
@@ -37,7 +38,7 @@ jobs:
 
       - name: Run append script
         run: |
-          node .github/scripts/pr.js \
+          node .github/scripts/append-feature-body..js \
             --github-token "${{ secrets.GITHUB_TOKEN }}" \
             --repo "${{ github.repository }}" \
             --pr-number "${{ github.event.pull_request.number }}" \
