@@ -56,7 +56,7 @@ async function main(args){
 function upsertPreviewPath(body, newPath){
     const makerStart = '<!-- PREVIEW_S3_PATH_START -->';
     const makerEnd = '<!-- PREVIEW_S3_PATH_END -->';
-    const newBlock = `${makerStart}\n${newBlock}\n${makerEnd}`;
+    const newBlock = `${makerStart}\n${newPath}\n${makerEnd}`;
 
     if(body.include(makerStart) && body.include(makerEnd)){
         console.info("koko1");
