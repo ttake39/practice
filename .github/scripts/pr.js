@@ -59,13 +59,14 @@ function upsertPreviewPath(body, newPath){
     const newBlock = `${makerStart}\n${newBlock}\n${makerEnd}`;
 
     if(body.include(makerStart) && body.include(makerEnd)){
-
+        console.info("koko1");
         // StartとEndに囲まれていたら更新
         return body.replase(
             new RegExp(`${markerStart}[\\s\\S]*?${markerEnd}`, 'm'),
             newBlock
         );
     }else{
+        console.info("koko2");
         return `${makerStart}\n${newPath}\n${makerEnd}`
     }
 }
