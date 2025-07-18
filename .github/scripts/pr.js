@@ -32,7 +32,7 @@ async function main(args){
             pull_number: parseInt(prNumber,10)
         });
 
-        const newMessage = "Message test";
+        const newMessage = `Preview path:${featureBranch}`;
         const newBody = `${newMessage}\n\n${pr.body || ''}`;
 
         await octokit.rest.pulls.update({
