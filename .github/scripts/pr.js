@@ -68,7 +68,7 @@ function upsertPreviewPath(body, newPath){
             newBlock
         );
     }else{
-        return `${makerStart}\n${newPath}\n${makerEnd}`
+        return `${body.trime()}\n\n${newBlock}`
     }
 }
 
