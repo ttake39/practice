@@ -1,0 +1,44 @@
+name: "Merged to Release"
+
+on:
+  pull_request:
+    branches:
+      - 'releases/*'
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name : pnpm
+        run: npm install -g pnpm
+
+      - name: Confirm pnpm is available
+        run: pnpm --version
+
+      - name: Create package.json if missing
+        run: |
+          if [ ! -f package.json ]; then
+            pnpm init
+          fi
+
+      - name: add github
+        run: pnpm add @actions/core @actions/github minimist
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run append script
+        run: |
+          node .github/scripts/pr.js \
+            --github-token "${{ secrets.GITHUB_TOKEN }}" \
+            --repo "${{ github.repository }}" \
+            --pr-number "${{ github.event.pull_request.number }}" \
+            --feature-branch "${{ github.event.pull_request.head.ref }}"
